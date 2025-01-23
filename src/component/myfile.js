@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 function MyNav() {
     return (
       <Navbar expand="lg" className="navbar-dark bg-dark MyNavbar fixed-top">
-         <Navbar.Brand href="#home" className='ps-5'>BookStore</Navbar.Brand>
+         <Navbar.Brand href="#home" className='ps-5'>EpicBook</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
@@ -20,12 +20,9 @@ function MyNav() {
             <button type="button" class="btn btn-primary me-3">
             Cart <span class="badge badge-light">0</span>
             </button>
-            <form class="d-flex me-5">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
           </Navbar.Collapse>
-         </Navbar>
+        <Navbar.Toggle />
+      </Navbar>
     );
   }
   

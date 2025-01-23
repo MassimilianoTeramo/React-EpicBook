@@ -3,8 +3,6 @@ import {MyNav, MyFooter, Welcome} from './component/myfile';
 import {Container} from 'react-bootstrap'
 import FantasyBooks from './component/GetJson';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 
 function App() {

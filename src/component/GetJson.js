@@ -1,33 +1,40 @@
-import {Card, Col, Row} from "react-bootstrap";
+import {Form, Col, Row} from "react-bootstrap";
 import libri from "../dati/fantasy.json";
+import SingleBook from "./SingleBook";
+import { useState } from "react";
 
 const FantasyBooks = ()=>{
+    const [searchBook, setSearchBook] = useState("");
+    const FilterBooks = libri.filter((libro) => libro.title.toLowerCase().includes(searchBook.toLowerCase()));
+
     return(
-        <Row>
-            {libri.map((libro) => {
-                return(
-                    <Col key={libro.asin} sm={6} md={4} lg={3} xl={3}>
-                        <Card className="MyCard">
-                            <Card.Img variant="top" src={libro.img} className="MyImg" />
-                            <Card.Body>
-                                <Card.Title className="text-truncate">{libro.title}</Card.Title>
-                                <Card.Text>
-                                    <span class="badge bg-danger text-uppercase ms-2">{libro.category}</span>
-                                    <span class="ms-2">ASIN:{libro.asin}</span>
-                                </Card.Text>
-                                <div className="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary"><i class="bi bi-cart"></i>
-                                </a>
-                                <strong>€{libro.price.toFixed(2)}</strong>
-                                </div>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                );
-            })}
-        </Row>
-
-
+        <>
+            <Row className="mt-5 mb-4">
+                <Col>
+                    <Form>
+                        <Form.Group>
+                            <Form.Control 
+                                type="text" 
+                                placeholder="Search Book"
+                                value = {searchBook}
+                                onChange={(e) => setSearchBook(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Form>
+                </Col>
+            </Row>
+            <Row>
+                {FilterBooks.map((libro) => {
+                    return(
+                        <Col key={libro.asin} sm={6} md={4} lg={3} xl={3} className="mb-3">
+                            <SingleBook libro={libro}/> 
+                        </Col>
+                    );
+                })}
+            </Row>
+        </>
     );
 }
+
+
 export default FantasyBooks;
